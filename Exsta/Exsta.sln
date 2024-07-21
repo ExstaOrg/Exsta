@@ -5,11 +5,16 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "UserService\UserService.csproj", "{CCA92519-86F5-4F65-8A68-E07E5E89E855}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService", "OrderService\OrderService.csproj", "{E804B394-7423-45D7-9400-DE5D6D13FDE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService", "OrderService\OrderService.csproj", "{E804B394-7423-45D7-9400-DE5D6D13FDE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminService", "AdminService\AdminService.csproj", "{899479E9-A86B-43CC-9402-7F7DD4D24A84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminService", "AdminService\AdminService.csproj", "{899479E9-A86B-43CC-9402-7F7DD4D24A84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService", "InventoryService\InventoryService.csproj", "{CA8FF372-74D5-4800-B953-69F249C5F4D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryService", "InventoryService\InventoryService.csproj", "{CA8FF372-74D5-4800-B953-69F249C5F4D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{0AFB4314-CA33-4726-A478-A58C4A8F1B90}"
+	ProjectSection(SolutionItems) = preProject
+		infra\sample.yaml = infra\sample.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
