@@ -2,7 +2,7 @@ name: Build and deploy .NET Core application to Web App exsta-user-service
 on:
   push:
     branches:
-    - feature/fix-pipeline-not-finding-project
+    - main
 env:
   AZURE_WEBAPP_NAME: exsta-user-service
   AZURE_WEBAPP_PACKAGE_PATH: Exsta\Services\UserService\publish
@@ -18,10 +18,6 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
-    - name: List directory structure
-      run: tree
-    - name: List project directory structure
-      run: dir ${{ env.WORKING_DIRECTORY }}
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
     - name: Build
