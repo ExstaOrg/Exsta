@@ -3,11 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{0AFB4314-CA33-4726-A478-A58C4A8F1B90}"
-	ProjectSection(SolutionItems) = preProject
-		..\.github\workflows\exsta-user-service.yml = ..\.github\workflows\exsta-user-service.yml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{4F16DD18-8964-4088-B085-EFC21DA956C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{38B13A26-7F27-4BEA-939A-A97FBA21AE99}"
@@ -15,6 +10,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "Services\UserService\UserService.csproj", "{107AE5CF-BE4F-470B-9E18-6EA6EEC96FC3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationFunction", "Functions\NotificationFunction\NotificationFunction.csproj", "{5AEC2B44-A254-45E1-A503-CE4C3B27D278}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{4815CD74-6C96-4D98-AC5A-1C798946788B}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\exsta-dev-user-service.yml = ..\.github\workflows\exsta-dev-user-service.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
