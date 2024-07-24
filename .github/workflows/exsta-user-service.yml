@@ -5,10 +5,10 @@ on:
     - feature/fix-pipeline-not-finding-project
 env:
   AZURE_WEBAPP_NAME: exsta-user-service
-  AZURE_WEBAPP_PACKAGE_PATH: Services\UserService\publish
+  AZURE_WEBAPP_PACKAGE_PATH: Exsta\Services\UserService\publish
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: Services\UserService
+  WORKING_DIRECTORY: Exsta\Services\UserService
 jobs:
   build:
     runs-on: windows-latest
