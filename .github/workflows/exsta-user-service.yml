@@ -2,7 +2,7 @@ name: Build and deploy .NET Core application to Web App exsta-user-service
 on:
   push:
     branches:
-    - feature/further-setup
+    - main
 env:
   AZURE_WEBAPP_NAME: exsta-user-service
   AZURE_WEBAPP_PACKAGE_PATH: Services\UserService\publish
