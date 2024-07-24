@@ -3,6 +3,9 @@ on:
   push:
     branches:
     - main
+  pull_request:
+    paths:
+    - 'Exsta/Services/UserService/**'
 env:
   AZURE_WEBAPP_NAME: exsta-user-service
   AZURE_WEBAPP_PACKAGE_PATH: Exsta\Services\UserService\publish
