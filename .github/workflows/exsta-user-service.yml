@@ -19,7 +19,7 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
     - name: List directory structure
-      run: dir
+      run: tree
     - name: List project directory structure
       run: dir ${{ env.WORKING_DIRECTORY }}
     - name: Restore
