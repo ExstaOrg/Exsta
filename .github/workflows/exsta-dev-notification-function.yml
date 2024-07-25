@@ -6,13 +6,13 @@ on:
     - feature/add-function-deploy-pipeline
   pull_request:
     paths:
-    - 'Exsta/Services/UserService/**'
+    - 'Exsta/Functions/NotificationFunction/**'
 
 env:
   AZURE_FUNCTIONAPP_NAME: exsta-dev-notification-function
   AZURE_FUNCTIONAPP_PACKAGE_PATH: Exsta\Functions\NotificationFunction\published
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 8.0.x
+  DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: Exsta\Functions\NotificationFunction
   DOTNET_CORE_VERSION_INPROC: 6.0.x
 jobs:
