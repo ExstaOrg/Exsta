@@ -3,6 +3,7 @@ on:
   push:
     branches:
     - main
+    - feature/add-function-deploy-pipeline
   pull_request:
     paths:
     - 'Exsta/Services/UserService/**'
