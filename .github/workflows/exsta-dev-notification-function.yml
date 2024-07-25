@@ -1,9 +1,8 @@
-name: Build and deploy .NET Core application to Function App exsta-dev-notification-function
+name: Build & deploy Notification function to exsta-dev-notification-function
 on:
   push:
     branches:
     - main
-    - feature/add-function-deploy-pipeline
   pull_request:
     paths:
     - 'Exsta/Functions/NotificationFunction/**'
