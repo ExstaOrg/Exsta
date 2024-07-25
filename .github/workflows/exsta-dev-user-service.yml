@@ -1,14 +1,18 @@
-name: Build and deploy .NET Core application to Web App exsta-user-service
+name: Build & deploy User service to exsta-dev-user-service
 on:
   push:
     branches:
     - main
+  pull_request:
+    paths:
+    - 'Exsta/Services/UserService/**'
+
 env:
-  AZURE_WEBAPP_NAME: exsta-user-service
-  AZURE_WEBAPP_PACKAGE_PATH: Services\UserService\publish
+  AZURE_WEBAPP_NAME: exsta-dev-user-service
+  AZURE_WEBAPP_PACKAGE_PATH: Exsta\Services\UserService\publish
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: Services\UserService
+  WORKING_DIRECTORY: Exsta\Services\UserService
 jobs:
   build:
     runs-on: windows-latest
@@ -44,5 +48,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.exsta_user_service_B6E6 }}
+        publish-profile: ${{ secrets.exsta_dev_user_service_178C }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
