@@ -11,7 +11,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: .\published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: .
+  WORKING_DIRECTORY: Exsta-frontend
 jobs:
   build:
     runs-on: windows-latest
