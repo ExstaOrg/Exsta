@@ -3,6 +3,7 @@ on:
   push:
     branches:
     - main
+    - feature/fix-frontend-pipeline
   pull_request:
     paths:
     - 'Exsta/Exsta-frontend/**'
@@ -11,7 +12,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: .\published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: .
+  WORKING_DIRECTORY: Exsta\Exsta-frontend
 jobs:
   build:
     runs-on: windows-latest
