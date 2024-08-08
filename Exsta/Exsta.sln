@@ -17,6 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{4815CD74
 		..\.github\workflows\exsta-dev-user-service.yml = ..\.github\workflows\exsta-dev-user-service.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D3001A7B-E1A4-498B-8158-795122D3F8D1}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Shared", ".Shared", "{4BA60918-A374-4671-A1EB-D4A9F6FE546D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{7C9FFEA1-B770-4CD5-A58E-044268ED9EB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +40,10 @@ Global
 		{5AEC2B44-A254-45E1-A503-CE4C3B27D278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AEC2B44-A254-45E1-A503-CE4C3B27D278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AEC2B44-A254-45E1-A503-CE4C3B27D278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C9FFEA1-B770-4CD5-A58E-044268ED9EB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9FFEA1-B770-4CD5-A58E-044268ED9EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9FFEA1-B770-4CD5-A58E-044268ED9EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9FFEA1-B770-4CD5-A58E-044268ED9EB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +51,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{107AE5CF-BE4F-470B-9E18-6EA6EEC96FC3} = {38B13A26-7F27-4BEA-939A-A97FBA21AE99}
 		{5AEC2B44-A254-45E1-A503-CE4C3B27D278} = {4F16DD18-8964-4088-B085-EFC21DA956C2}
+		{7C9FFEA1-B770-4CD5-A58E-044268ED9EB0} = {4BA60918-A374-4671-A1EB-D4A9F6FE546D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F00C589-974F-4187-BF0C-CC10607B6A73}
