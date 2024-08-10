@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Exsta/Services/UserService/appsettings.LocalDevelopment.json
