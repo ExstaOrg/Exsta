@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "apis1": {
+      "apiEndpoint": "https://exsta-dev-apim.azure-api.net/userservice",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/exsta-dev-apim/apis/ExstaUserService",
+      "type": "apis.azure"
+    }
+  }
+}
