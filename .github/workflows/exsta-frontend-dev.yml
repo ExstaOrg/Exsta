@@ -5,7 +5,7 @@ on:
     - main
   pull_request:
     paths:
-    - 'Exsta/Exsta-frontend/**'
+    - 'Exsta-frontend/**'
 env:
   AZURE_WEBAPP_NAME: exsta-frontend-dev
   AZURE_WEBAPP_PACKAGE_PATH: .\published
