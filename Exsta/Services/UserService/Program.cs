@@ -10,10 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 var allowedCorsOrigins = builder.Configuration.GetSection("AllowedCorsOrigins").Get<string[]>()
     ?? [""];
 
-foreach (var s in allowedCorsOrigins) {
-    Console.WriteLine("Allowed origin: " + s);
-}
-
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowSpecificOrigin",
         builder => builder.WithOrigins(allowedCorsOrigins) // Specify the allowed origins
