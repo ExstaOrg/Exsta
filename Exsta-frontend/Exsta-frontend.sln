@@ -15,7 +15,6 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		Development|Any CPU = Development|Any CPU
 		Release|Any CPU = Release|Any CPU
-		Staging|Any CPU = Staging|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A783F77A-2CD0-4273-ADFE-50955033CC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -24,8 +23,6 @@ Global
 		{A783F77A-2CD0-4273-ADFE-50955033CC79}.Development|Any CPU.Build.0 = Development|Any CPU
 		{A783F77A-2CD0-4273-ADFE-50955033CC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A783F77A-2CD0-4273-ADFE-50955033CC79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A783F77A-2CD0-4273-ADFE-50955033CC79}.Staging|Any CPU.ActiveCfg = Staging|Any CPU
-		{A783F77A-2CD0-4273-ADFE-50955033CC79}.Staging|Any CPU.Build.0 = Staging|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
