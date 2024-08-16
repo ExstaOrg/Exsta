@@ -9,7 +9,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: exsta-frontend-dev
   AZURE_WEBAPP_PACKAGE_PATH: .\published
-  CONFIGURATION: Staging
+  CONFIGURATION: Development
   DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: Exsta-frontend
 jobs:
