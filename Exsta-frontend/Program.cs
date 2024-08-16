@@ -6,6 +6,9 @@ WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+// Optional: Load environment-specific configuration (e.g., appsettings.Development.json)
+builder.Configuration.AddJsonFile($"appsettings.{builder.HostEnvironment.Environment}.json", optional: true, reloadOnChange: true);
+
 // Load the subscription key from configuration
 string? subscriptionKey = builder.Configuration["ApiManagement:SubscriptionKey"];
 
