@@ -42,8 +42,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine(Configuration["user-service-url"] + "/weatherforecast");
-
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>(Configuration["user-service-url"] + "/weatherforecast");
     }
 
