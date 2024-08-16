@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\appsettings.Development.json">
+    <Content Update="wwwroot\appsettings.Staging.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\appsettings.json">
