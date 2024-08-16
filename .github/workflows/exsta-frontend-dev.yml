@@ -12,7 +12,6 @@ env:
   CONFIGURATION: Development
   DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: Exsta-frontend
-  RESOURCE_GROUP: exsta-dev-frontend
 jobs:
   build:
     runs-on: windows-latest
@@ -44,9 +43,6 @@ jobs:
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-    - name: Set Azure App Service environment variable
-      run: |
-        az webapp config appsettings set --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{env.RESOURCE_GROUP}} --settings ASPNETCORE_ENVIRONMENT=Development
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
