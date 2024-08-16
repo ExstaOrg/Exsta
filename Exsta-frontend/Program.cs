@@ -9,6 +9,8 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 // Load the subscription key from configuration
 string? subscriptionKey = builder.Configuration["ApiManagement:SubscriptionKey"];
 
+Console.WriteLine("sub key:" + subscriptionKey);
+
 builder.Services.AddScoped(sp => {
     HttpClient client = new() { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) };
 
