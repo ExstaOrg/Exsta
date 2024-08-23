@@ -1,31 +1,83 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@* <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">Exsta-frontend</a>
+        <Button Color="Color.Primary">Click me</Button>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <Icon Name="IconName.Mail" />
     </div>
-</div>
+</div> *@
+@*   <div class="b-bar-brand">
+        <Icon Name="IconName.Mail" />
+        <a class="navbar-brand" href="">Exsta</a>
+    </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
-</div>
+    <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+        <nav class="flex-column">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="counter">
+                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="weather">
+                    <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+                </NavLink>
+            </div>
+        </nav>
+    </div> *@
+
+<Bar class="navbar" Mode="BarMode.VerticalInline"
+     CollapseMode="BarCollapseMode.Small"
+     Breakpoint="Breakpoint.Desktop"
+     NavigationBreakpoint="Breakpoint.Tablet"
+     ThemeContrast="ThemeContrast.Light">
+    <BarBrand>
+        <BarItem>
+            <BarLink To="#">
+                <BarIcon IconName="IconName.Coffee" />
+                <h2>&nbsp;Exsta</h2>
+            </BarLink>
+        </BarItem>
+    </BarBrand>
+    <BarMenu>
+        <BarStart>
+            <BarItem>
+                <Card Class="heya">
+                    <BarLink To="#login">
+                        <BarIcon IconName="IconName.User" />
+                        Login/Register
+                    </BarLink>
+                </Card>
+            </BarItem>
+            <BarItem>
+                <BarLink To="#docs">Sales</BarLink>
+            </BarItem>
+            <BarItem>
+                <BarLink To="#docs">Browse</BarLink>
+            </BarItem>
+            <BarItem>
+                <BarLink To="#docs">Orders</BarLink>
+            </BarItem>
+        </BarStart>
+        <BarEnd>
+            <BarItem>
+                <Card>
+                    <BarLink To="#">
+                        <BarIcon IconName="IconName.ShoppingCart" />
+                        Cart (0)
+                    </BarLink>
+                </Card>
+            </BarItem>
+        </BarEnd>
+    </BarMenu>
+</Bar>
 
 @code {
     private bool collapseNavMenu = true;
