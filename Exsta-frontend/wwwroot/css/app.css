@@ -105,3 +105,36 @@ code {
 .navbar .card {
     margin: 8px;
 }
+
+.body {
+    margin: 12px;
+}
+
+.featuredImage {
+    width: 40%;
+    float: left;
+    border-radius: 25px;
+}
+
+figure {
+    margin-bottom: 0px;
+}
+
+.cardText {
+    position: absolute;
+    width: 56%;
+    left: 42%;
+}
+
+.cardButton {
+    float: right;
+    position: absolute;
+    bottom: 14px;
+    right: 10px;
+}
+
+.cardPriceLabel {
+    position: absolute;
+    bottom: 14px;
+    right: 130px;
+}

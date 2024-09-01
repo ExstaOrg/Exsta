@@ -17,39 +17,39 @@
 </div> *@
 
 <div class="page">
-<Layout Sider>
-    <LayoutSider>
-        <LayoutSiderContent>
-             @* Loads in Nav Menu *@
-            <NavMenu />
-        </LayoutSiderContent>
-    </LayoutSider>
-    <Layout>
-        <LayoutHeader Fixed>
-            <Bar Breakpoint="Breakpoint.Desktop"
-                 Background="Background.Light"
-                 ThemeContrast="ThemeContrast.Light">
-                <BarToggler />
-                <BarMenu>
-                    <BarStart>
-                        <BarItem>
-                            <Field class="px-3">
-                                <TextEdit Placeholder="Search..." />
-                            </Field>
-                        </BarItem>
-                    </BarStart>
-                    <BarEnd>
-                        <BarItem class="px-3">
-                            <BarLink To="#extaCompany">Exsta Company</BarLink>
-                        </BarItem>
-                    </BarEnd>
-                </BarMenu>
-            </Bar>
-        </LayoutHeader>
-        <LayoutContent>
-            @* Loads in Content specific Page *@
-            @Body
-        </LayoutContent>
+    <Layout Sider>
+        <LayoutSider>
+            <LayoutSiderContent>
+                @* Loads in Nav Menu *@
+                <NavMenu />
+            </LayoutSiderContent>
+        </LayoutSider>
+        <Layout>
+            <LayoutHeader Fixed>
+                <Bar Breakpoint="Breakpoint.Desktop"
+                     Background="Background.Light"
+                     ThemeContrast="ThemeContrast.Light">
+                    <BarToggler />
+                    <BarMenu>
+                        <BarStart>
+                            <BarItem>
+                                <Field class="px-3">
+                                    <TextEdit Placeholder="Search..." />
+                                </Field>
+                            </BarItem>
+                        </BarStart>
+                        <BarEnd>
+                            <BarItem class="px-3">
+                                <BarLink To="#extaCompany">Exsta Company</BarLink>
+                            </BarItem>
+                        </BarEnd>
+                    </BarMenu>
+                </Bar>
+            </LayoutHeader>
+            <LayoutContent class="body">
+                @* Loads in Content specific Page *@
+                @Body
+            </LayoutContent>
+        </Layout>
     </Layout>
-</Layout>
 </div>
