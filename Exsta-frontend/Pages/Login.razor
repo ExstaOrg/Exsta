@@ -5,13 +5,38 @@
 <h3>Login</h3>
 
 <Card>
-    <CardBody>
-        <Heading Size="HeadingSize.Is5">
-            Welcome.
+    <CardBody Class="loginContainer">
+        <Heading Size="HeadingSize.Is5" Class="loginIntro">
+            <Strong> Welcome. </Strong>
+            <br />
             Glad to see you!
         </Heading>
+        <Div Class="inputFields">
+            <Fields>
+                <Field ColumnSize="ColumnSize.Is12.OnDesktop.Is12.OnMobile">
+                    <FieldBody>
+                        <TextEdit Placeholder="Username/Email" Role="TextRole.Email" />
+                    </FieldBody>
+                </Field>
+                <Field ColumnSize="ColumnSize.Is12.OnDesktop.Is12.OnMobile">
+                    <FieldBody>
+                        <TextEdit Placeholder="Password" Role="TextRole.Password" autocomplete="new-password" />
+                    </FieldBody>
+                    <Link Class="linkForgotPass" To="#b-docs-page-title">
+                    forgot Password?
+                    </Link>
+                </Field>
+                <Field ColumnSize="ColumnSize.Is12.OnDesktop.Is12.OnMobile">
+                    <Button Color="Color.Primary" Type="ButtonType.Link" To="#">Login</Button>
+                </Field>
+                <Field>
+                <Button Color="Color.Secondary" Type="ButtonType.Link" To="#" Target="Target.Blank">Sign Up</Button>
+                </Field>
+            </Fields>
+        </Div>
     </CardBody>
 </Card>
+
 
 @code {
 
