@@ -36,7 +36,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('exsta-dev-user-service-api', subscription().subscriptionId)))]",
+      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('userservice', subscription().subscriptionId)))]",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "apiVersion": "2019-10-01",
       "dependsOn": [
@@ -53,7 +53,7 @@
               "type": "Microsoft.ApiManagement/service",
               "location": "[parameters('resourceLocation')]",
               "properties": {
-                "publisherEmail": "timmeermans@live.nl",
+                "publisherEmail": "ididthisforow@live.nl",
                 "publisherName": "Exsta",
                 "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
                 "hostnameConfigurations": [
@@ -68,17 +68,13 @@
                     "defaultSslBinding": true
                   }
                 ],
-                "publicIPAddresses": [
-                  "20.54.191.108"
-                ],
+                "publicIPAddresses": null,
                 "privateIPAddresses": null,
                 "additionalLocations": null,
                 "virtualNetworkConfiguration": null,
                 "customProperties": {
                   "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
                   "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "False",
-                  "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "False",
-                  "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
                   "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "False",
                   "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "False",
                   "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False",
@@ -92,22 +88,23 @@
                 }
               },
               "sku": {
-                "name": "Developer",
-                "capacity": 1
+                "name": "Consumption",
+                "capacity": 0
               },
               "apiVersion": "2019-12-01"
             },
             {
               "type": "Microsoft.ApiManagement/service/apis",
-              "name": "exsta-dev-apim/exsta-dev-user-service-api",
+              "name": "exsta-dev-apim/userservice",
               "properties": {
-                "displayName": "exsta-dev-user-service-api",
+                "displayName": "UserService",
                 "apiRevision": "1",
-                "description": "",
+                "description": null,
                 "subscriptionRequired": true,
-                "serviceUrl": null,
-                "path": "user-service",
+                "serviceUrl": "https://exsta-dev-user-service.azurewebsites.net/",
+                "path": "userservice",
                 "protocols": [
+                  "http",
                   "https"
                 ],
                 "authenticationSettings": {
