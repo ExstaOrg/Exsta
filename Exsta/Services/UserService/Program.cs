@@ -42,11 +42,11 @@ if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName.Equals("L
 
 app.UseHttpsRedirection();
 
-app.UseMiddleware<ApiKeyMiddleware>();
-
 app.UseAuthorization();
 
 app.UseCors("AllowAll");
+
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.MapControllers();
 
