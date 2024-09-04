@@ -11,8 +11,8 @@ var allowedCorsOrigins = builder.Configuration.GetSection("AllowedCorsOrigins").
     ?? [""];
 
 builder.Services.AddCors(options => {
-    options.AddPolicy("AllowSpecificOrigin",
-        builder => builder.WithOrigins(allowedCorsOrigins) // Specify the allowed origins
+    options.AddPolicy("AllowAll",
+        builder => builder.AllowAnyOrigin() // Specify the allowed origins
                           .AllowAnyHeader()
                           .AllowAnyMethod());
 });
@@ -46,7 +46,7 @@ app.UseMiddleware<ApiKeyMiddleware>();
 
 app.UseAuthorization();
 
-app.UseCors("AllowSpecificOrigin");
+app.UseCors("AllowAll");
 
 app.MapControllers();
 
