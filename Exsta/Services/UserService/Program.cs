@@ -42,9 +42,9 @@ if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName.Equals("L
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.UseCors("AllowAll");
+
+app.UseAuthorization();
 
 app.UseMiddleware<ApiKeyMiddleware>();
 
