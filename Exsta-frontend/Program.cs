@@ -6,15 +6,8 @@ WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-// Load the subscription key from configuration
-string? subscriptionKey = builder.Configuration["ApiManagement:SubscriptionKey"];
-
 builder.Services.AddScoped(sp => {
     HttpClient client = new() { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) };
-
-    // Add the subscription key to the default request headers
-    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-
     return client;
 });
 

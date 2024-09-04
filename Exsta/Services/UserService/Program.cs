@@ -11,8 +11,8 @@ var allowedCorsOrigins = builder.Configuration.GetSection("AllowedCorsOrigins").
     ?? [""];
 
 builder.Services.AddCors(options => {
-    options.AddPolicy("AllowAll",
-        builder => builder.AllowAnyOrigin() // Specify the allowed origins
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins(allowedCorsOrigins) // Specify the allowed origins
                           .AllowAnyHeader()
                           .AllowAnyMethod());
 });
@@ -42,7 +42,7 @@ if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName.Equals("L
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowAll");
+app.UseCors("AllowSpecificOrigin");
 
 app.UseAuthorization();
 
