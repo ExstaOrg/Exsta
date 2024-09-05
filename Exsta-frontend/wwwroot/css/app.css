@@ -151,7 +151,7 @@ figure {
 }
 
 /*Login Page CSS*/
-.loginIntro {
+.loginIntro, .registerIntro {
     text-align: center;
 }
 
