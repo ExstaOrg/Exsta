@@ -103,9 +103,17 @@ code {
 }
 */
 
-
+/* Nave Menu*/
 .navbar .card {
     margin: 8px;
+}
+
+.loginCard.active {
+    background: #D7DAE7 !important;
+}
+
+#exstaIcon {
+    color: #795695;
 }
 
 /*Home Page CSS*/
@@ -150,10 +158,6 @@ figure {
 .loginContainer {
     padding-left: 40%;
     padding-right: 40%;
-}
-
-.inputFields {
-
 }
 
 .linkForgotPass {
