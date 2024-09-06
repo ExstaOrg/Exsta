@@ -8,6 +8,11 @@ namespace UserService.Controllers;
 public class UserController(IUserRepository userRepository) : ControllerBase {
     private readonly IUserRepository _userRepository = userRepository;
 
+    [HttpOptions]
+    public IActionResult Options() {
+        return Ok();
+    }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<User>>> GetAllUsers() {
         var users = await _userRepository.GetAllUsersAsync();

@@ -1,4 +1,6 @@
+using Azure.Identity;
 using Microsoft.EntityFrameworkCore;
+using Shared.Middleware;
 using UserService.Data;
 using UserService.Repositories;
 
@@ -14,6 +16,10 @@ builder.Services.AddCors(options => {
                           .AllowAnyHeader()
                           .AllowAnyMethod());
 });
+
+// Key Vault
+builder.Configuration.AddAzureKeyVault(new Uri("https://exsta-dev-key-vault.vault.azure.net/"),
+    new DefaultAzureCredential());
 
 //DbContext
 builder.Services.AddDbContext<UserServiceDbContext>(options =>
@@ -36,9 +42,11 @@ if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName.Equals("L
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowSpecificOrigin");
+
 app.UseAuthorization();
 
-app.UseCors("AllowSpecificOrigin");
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.MapControllers();
 

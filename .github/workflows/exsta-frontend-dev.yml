@@ -1,15 +1,15 @@
-name: Build and deploy frontend to exsta-frontend-dev
+name: Build & deploy frontend to exsta-frontend-dev
 on:
   push:
     branches:
     - main
   pull_request:
     paths:
-    - 'Exsta/Exsta-frontend/**'
+    - 'Exsta-frontend/**'
 env:
   AZURE_WEBAPP_NAME: exsta-frontend-dev
   AZURE_WEBAPP_PACKAGE_PATH: .\published
-  CONFIGURATION: Release
+  CONFIGURATION: Development
   DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: Exsta-frontend
 jobs:
