@@ -23,6 +23,11 @@ jobs:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+    - name: Replace environment name in index.html with PowerShell
+      run: |
+        $indexFilePath = "${{ env.WORKING_DIRECTORY }}\wwwroot\index.html"
+        (Get-Content $indexFilePath) -replace 'PLACEHOLDER_ENVIRONMENT_NAME', '${{ env.CONFIGURATION }}' | Set-Content $indexFilePath
+      shell: pwsh
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
     - name: Test
