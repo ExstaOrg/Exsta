@@ -116,6 +116,11 @@ code {
     color: #795695;
 }
 
+.form-check-input:checked {
+    background-color: #A745E8;
+    border-color: #9333ea;
+}
+
 /*Home Page CSS*/
 .body {
     margin: 12px;
@@ -155,6 +160,10 @@ figure {
     text-align: center;
 }
 
+.registerIntro {
+    padding-bottom: 16px;
+}
+
 .loginContainer {
     padding-left: 40%;
     padding-right: 40%;
@@ -167,6 +176,14 @@ figure {
     text-decoration: none;
     transition: color .5s ease-in-out;
     float: right;
+}
+
+.linkTermsConditions {
+    margin: 0px;
+    color: #3f4d62;
+    border-bottom: 2px solid var(--b-theme-primary);
+    text-decoration: none;
+    transition: color .5s ease-in-out;
 }
 
 .inputFields .btn {

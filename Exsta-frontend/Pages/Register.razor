@@ -11,38 +11,83 @@
             <br />
             We're glad to have you!
         </Heading>
-        <Fields>
-            <Field ColumnSize="ColumnSize.Is3.Is3.WithOffset">
+        <Fields Class="inputFields">
+            <Field ColumnSize="ColumnSize.Is4.Is4.WithOffset">
                 <FieldLabel><Strong>Let's get you all set up</Strong></FieldLabel>
                 <FieldBody>
-                    <TextEdit Placeholder="Username"/>
+                    <TextEdit Placeholder="Username" />
                 </FieldBody>
             </Field>
-            <Field ColumnSize="ColumnSize.IsHalf">
-                <FieldLabel>email</FieldLabel>
+            <Field ColumnSize="ColumnSize.Is4.Is4.WithOffset">
                 <FieldBody>
-                    <TextEdit Text="Smith" />
+                    <TextEdit Placeholder="Email" />
                 </FieldBody>
             </Field>
-            <Field ColumnSize="ColumnSize.IsFull">
-                <FieldLabel>Password</FieldLabel>
+            <Field ColumnSize="ColumnSize.Is4.Is4.WithOffset">
+
                 <FieldBody>
-                    <TextEdit Text="john.smith@example.com" />
+                    <TextEdit Role="TextRole.Password" Placeholder="Password" />
                     <FieldHelp>Password strength: <Text TextColor="TextColor.Danger">weak</Text></FieldHelp>
                 </FieldBody>
             </Field>
-            <Field ColumnSize="ColumnSize.IsFull">
-                <FieldLabel>Repeat Password</FieldLabel>
+            <Field ColumnSize="ColumnSize.Is4.Is4.WithOffset">
                 <FieldBody>
-                    <TextEdit Text="john.smith@example.com" />
+                    <TextEdit Role="TextRole.Password" Placeholder="Repeat Password" />
                 </FieldBody>
             </Field>
-            <Field Flex="Flex.JustifyContent.Between">
-                <Button Color="Color.Danger">Delete</Button>
-                <Div>
-                    <Button Color="Color.Secondary">Cancel</Button>
-                    <Button Color="Color.Primary">Sign me Up!</Button>
-                </Div>
+            <Field ColumnSize="ColumnSize.Is2.Is4.WithOffset">
+                <FieldBody>
+                    <FieldLabel><Strong>Shipping information</Strong></FieldLabel>
+                    <TextEdit Placeholder="First Name" />
+                </FieldBody>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is2">
+                <FieldBody>
+                    <FieldLabel>&nbsp;</FieldLabel>
+                    <TextEdit Placeholder="Last Name" />
+                </FieldBody>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is3.Is4.WithOffset">
+                <FieldBody>
+                    <TextEdit Placeholder="Streetname" />
+                </FieldBody>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is1">
+                <FieldBody>
+                    <TextEdit Placeholder="Nr" />
+                </FieldBody>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is2.Is4.WithOffset">
+                <FieldBody>
+                    <TextEdit Placeholder="Postal Code" />
+                </FieldBody>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is2">
+                <FieldBody>
+                    <TextEdit Placeholder="City" />
+                </FieldBody>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is4.Is4.WithOffset">
+                <FieldBody>
+                    <Select TValue="string">
+                        <SelectItem>Belgium</SelectItem>
+                        <SelectItem>Germany</SelectItem>
+                        <SelectItem>Netherlands</SelectItem>
+                    </Select>
+                </FieldBody>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is4.Is4.WithOffset">
+                <FieldBody>
+                    <Check TValue="bool">
+                        I understand & agree with the
+                        <Link Class="linkTermsConditions" To="" Target="Target.Blank">
+                        Terms & Conditions
+                        </Link>
+                    </Check>
+                </FieldBody>
+            </Field>
+            <Field ColumnSize="ColumnSize.Is4.Is4.WithOffset">
+                <Button Color="Color.Primary" Type="ButtonType.Link" Size="Size.Small" To="">Sign me up!</Button>
             </Field>
         </Fields>
     </CardBody>
