@@ -103,7 +103,35 @@ code {
 }
 */
 
-/* Nave Menu*/
+/*mobile CSS*/
+@media (max-width: 750px) {
+    h3 {
+        color: red;
+    }
+
+    .b-layout-sider {
+        display: none !important;
+    }
+
+    .showOnMobileOnly{
+        display: inherit !important;
+    }
+}
+
+@media (max-width: 1000px) {
+     .b-layout-sider {
+        display: none !important;
+    }
+    .navbar Card {
+        background-color: red;
+    }
+}
+
+.showOnMobileOnly {
+    display: none;
+}
+
+/* Nav Menu*/
 .navbar .card {
     margin: 8px;
 }
@@ -119,6 +147,10 @@ code {
 .form-check-input:checked {
     background-color: #A745E8;
     border-color: #9333ea;
+}
+
+.navbar-toggler {
+    margin-left: 10px;
 }
 
 /*Home Page CSS*/
