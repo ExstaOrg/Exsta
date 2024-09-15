@@ -104,14 +104,14 @@ code {
 */
 
 /*mobile CSS*/
-@media (max-width: 750px) {
+@media (max-width: 770px) {
     h3 {
         color: red;
     }
 
-    .b-layout-sider {
+    /*.b-layout-sider {
         display: none !important;
-    }
+    }*/
 
     .showOnMobileOnly{
         display: inherit !important;
@@ -119,9 +119,9 @@ code {
 }
 
 @media (max-width: 1000px) {
-     .b-layout-sider {
+     /*.b-layout-sider {
         display: none !important;
-    }
+    }*/
     .navbar Card {
         background-color: red;
     }

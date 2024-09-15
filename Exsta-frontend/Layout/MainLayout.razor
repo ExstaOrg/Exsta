@@ -18,18 +18,33 @@
 
 <div class="page">
     <Layout Sider>
+        @* <LayoutSider>
+            <LayoutSiderContent> *@
+                @* Loads in Nav Menu *@
+                @* <NavMenu />
+            </LayoutSiderContent>
+        </LayoutSider> *@
+
+        @* Test *@
         <LayoutSider>
             <LayoutSiderContent>
-                @* Loads in Nav Menu *@
-                <NavMenu />
-            </LayoutSiderContent>
-        </LayoutSider>
-        <Layout>
-            <LayoutHeader Fixed>
-                <Bar Breakpoint="Breakpoint.Desktop"
+                <Bar @ref="@sidebar" Mode="BarMode.VerticalInline"
+                     Breakpoint="Breakpoint.Desktop"
                      Background="Background.Light"
                      ThemeContrast="ThemeContrast.Light">
-                    <BarToggler />
+                    <BarItem>Example</BarItem>
+                </Bar>
+            </LayoutSiderContent>
+        </LayoutSider>
+
+        <Layout>
+            <LayoutHeader Fixed>
+                <Bar Mode="BarMode.Horizontal"
+                     Breakpoint="Breakpoint.Desktop"
+                     Background="Background.Light"
+                     ThemeContrast="ThemeContrast.Light">
+                    <BarToggler Bar="@sidebar" />
+                    @* <BarToggler /> *@
                     <BarMenu>
                         <BarStart>
                             <BarItem>
@@ -73,3 +88,7 @@
         </Layout>
     </Layout>
 </div>
+
+@code {
+    private Bar sidebar;
+}

@@ -35,7 +35,7 @@
 
 <Bar class="navbar" Mode="BarMode.VerticalInline"
      CollapseMode="BarCollapseMode.Small"
-     Breakpoint="Breakpoint.Desktop"
+     Breakpoint="Breakpoint.Mobile"
      NavigationBreakpoint="Breakpoint.Tablet"
      ThemeContrast="ThemeContrast.Light">
     <BarBrand>
@@ -80,6 +80,8 @@
 </Bar>
 
 @code {
+    private Bar sidebar;
+
     private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
