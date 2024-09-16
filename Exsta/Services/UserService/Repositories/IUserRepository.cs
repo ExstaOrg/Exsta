@@ -1,4 +1,4 @@
-using UserService.Models;
+using Exsta_Shared.Domain;
 
 namespace UserService.Repositories;
 public interface IUserRepository {

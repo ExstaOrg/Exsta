@@ -21,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\..\..\Exsta-Shared\Exsta-Shared.csproj" />
+    <ProjectReference Include="..\..\Shared\Backend-Shared.csproj" />
   </ItemGroup>
 
 </Project>

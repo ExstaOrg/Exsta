@@ -1,4 +1,4 @@
-namespace UserService.Models;
+namespace Exsta_Shared.Domain;
 
 public class User {
     public int Id { get; set; }

@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using UserService.Models;
+﻿using Exsta_Shared.Domain;
+using Microsoft.AspNetCore.Mvc;
 using UserService.Repositories;
 
 namespace UserService.Controllers;

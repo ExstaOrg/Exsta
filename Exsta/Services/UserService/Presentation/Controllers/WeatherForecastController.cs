@@ -1,3 +1,4 @@
+using Exsta_Shared.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UserService.Controllers;
