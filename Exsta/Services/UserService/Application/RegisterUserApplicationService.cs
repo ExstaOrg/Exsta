@@ -6,7 +6,7 @@ namespace UserService.Application;
 
 public class RegisterUserApplicationService(IUserRepository userRepository) : IRegisterUserApplicationService {
 
-    private readonly IUserRepository _userRepository;
+    private readonly IUserRepository _userRepository = userRepository;
 
     public async Task<(bool Success, string[]? Errors)> RegisterUserAsync(RegisterUserDto registerUserDto) {
         // Check if the user already exists
