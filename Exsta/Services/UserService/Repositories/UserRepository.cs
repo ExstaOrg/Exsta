@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Exsta_Shared.Domain;
+using Microsoft.EntityFrameworkCore;
 using UserService.Data;
-using UserService.Models;
 
 namespace UserService.Repositories;
 public class UserRepository : IUserRepository {
