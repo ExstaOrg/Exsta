@@ -35,4 +35,8 @@ public class UserRepository : IUserRepository {
             await _context.SaveChangesAsync();
         }
     }
+
+    public async Task<User?> GetUserByEmailAsync(string email) {
+        return await _context.Users.Where(user => string.Equals(email, user.Email, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefaultAsync();
+    }
 }
