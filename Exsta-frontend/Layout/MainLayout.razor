@@ -4,14 +4,6 @@
     <Layout Sider>
         <LayoutSider>
             <LayoutSiderContent>
-                @* <Bar @ref="@sidebar" Mode="BarMode.VerticalInline"
-                Breakpoint="Breakpoint.Desktop"
-                Background="Background.Light"
-                ThemeContrast="ThemeContrast.Light">
-                <BarToggler Bar="@sidebar" />
-                <BarItem>Example</BarItem>
-                </Bar> *@
-
                 @* Side Bar *@
                 <Bar @ref="@sidebar" class="navbar" Mode="BarMode.VerticalInline"
                      Breakpoint="Breakpoint.Desktop"
@@ -71,7 +63,7 @@
             </LayoutSiderContent>
         </LayoutSider>
 
-        @* Top Bar *@
+        @* Top Bar/Header *@
         <Layout>
             <LayoutHeader Fixed>
                 <Bar Mode="BarMode.Horizontal"

@@ -1,25 +1,11 @@
 /*mobile CSS*/
 @media (max-width: 770px) {
-    h3 {
-        color: red;
-    }
-
-    /*.b-layout-sider {
-        display: none !important;
-    }*/
-
     .showOnMobileOnly {
         display: inherit !important;
     }
 
     .hideOnMobileOnly {
         display: none;
-    }
-}
-
-@media (max-width: 1000px) {
-    .navbar Card {
-        background-color: red;
     }
 }
 
