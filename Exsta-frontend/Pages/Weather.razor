@@ -1,5 +1,7 @@
 ﻿@page "/weather"
+@using Exsta_Shared.Domain
 @inject HttpClient Http
+@inject IConfiguration Configuration
 
 <PageTitle>Weather</PageTitle>
 
@@ -41,17 +43,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("https://exsta-dev-user-service.azurewebsites.net/weatherforecast/");
-    }
-
-    public class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-
-        public int TemperatureC { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-
-        public string? Summary { get; set; }
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>(Configuration["user-service-url"] + "/weatherforecast");
     }
 }

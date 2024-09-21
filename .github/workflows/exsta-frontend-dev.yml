@@ -1,15 +1,15 @@
-name: Build and deploy frontend to exsta-frontend-dev
+name: Build & deploy frontend to exsta-frontend-dev
 on:
   push:
     branches:
     - main
   pull_request:
     paths:
-    - 'Exsta/Exsta-frontend/**'
+    - 'Exsta-frontend/**'
 env:
   AZURE_WEBAPP_NAME: exsta-frontend-dev
   AZURE_WEBAPP_PACKAGE_PATH: .\published
-  CONFIGURATION: Release
+  CONFIGURATION: Development
   DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: Exsta-frontend
 jobs:
@@ -23,12 +23,17 @@ jobs:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+    - name: Replace environment name in index.html with PowerShell
+      run: |
+        $indexFilePath = "${{ env.WORKING_DIRECTORY }}\wwwroot\index.html"
+        (Get-Content $indexFilePath) -replace 'PLACEHOLDER_ENVIRONMENT_NAME', '${{ env.CONFIGURATION }}' | Set-Content $indexFilePath
+      shell: pwsh
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
     - name: Test
       run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
     - name: Publish
-      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
     - name: Publish Artifacts
       uses: actions/upload-artifact@v3
       with:

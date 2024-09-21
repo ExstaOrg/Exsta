@@ -1,6 +1,6 @@
+using Exsta_Shared.Domain;
 using Microsoft.EntityFrameworkCore;
 using Shared.Data;
-using UserService.Models;
 
 namespace UserService.Data;
 public class UserServiceDbContext(DbContextOptions<UserServiceDbContext> options) : BaseDbContext(options) {
