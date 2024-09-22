@@ -1,16 +1,107 @@
 ﻿@inherits LayoutComponentBase
+
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+    <Layout Sider>
+        <LayoutSider>
+            <LayoutSiderContent>
+                @* Side Bar *@
+                <Bar @ref="@sidebar" class="navbar" Mode="BarMode.VerticalInline"
+                     Breakpoint="Breakpoint.Desktop"
+                     Background="Background.Light"
+                     NavigationBreakpoint="Breakpoint.Tablet"
+                     ThemeContrast="ThemeContrast.Light">
+                    @* <BarToggler Bar="@sidebar" /> *@
+                    <BarBrand>
+                        <BarItem>
+                            <BarLink To="">
+                                <BarIcon id="exstaIcon" IconName="IconName.Coffee" IconSize="IconSize.Large" />
+                                <h2>&nbsp;Exsta</h2>
+                            </BarLink>
+                        </BarItem>
+                    </BarBrand>
+                    <BarMenu>
+                        <BarStart>
+                            <BarItem>
+                                <Card>
+                                    <BarLink To="login" Class="loginCard">
+                                        <BarIcon IconName="IconName.User" />
+                                        Login/Register
+                                    </BarLink>
+                                </Card>
+                            </BarItem>
+                            <BarItem Class="showOnMobileOnly">
+                                <Field class="px-3">
+                                    <TextEdit Placeholder="Search..." />
+                                </Field>
+                            </BarItem>
+                            <BarItem>
+                                <BarLink To="#docs">Sales</BarLink>
+                            </BarItem>
+                            <BarItem>
+                                <BarLink To="#docs">Browse</BarLink>
+                            </BarItem>
+                            <BarItem>
+                                <BarLink To="#docs">Orders</BarLink>
+                            </BarItem>
+                            <BarItem Class="showOnMobileOnly">
+                                <BarLink To="#docs">Exsta Company</BarLink>
+                            </BarItem>
+                        </BarStart>
+                        <BarEnd>
+                            <BarItem>
+                                <Card>
+                                    <BarLink To="#">
+                                        <BarIcon IconName="IconName.ShoppingCart" />
+                                        Cart (0)
+                                    </BarLink>
+                                </Card>
+                            </BarItem>
+                        </BarEnd>
+                    </BarMenu>
+                </Bar>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+            </LayoutSiderContent>
+        </LayoutSider>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
+        @* Top Bar/Header *@
+        <Layout>
+            <LayoutHeader Fixed>
+                <Bar Mode="BarMode.Horizontal"
+                     Breakpoint="Breakpoint.Desktop"
+                     Background="Background.Light"
+                     ThemeContrast="ThemeContrast.Light">
+                    <BarToggler Bar="@sidebar" />
+                    @* <BarToggler /> *@
+                    <BarMenu>
+                        <BarStart>
+                            <BarItem Class="hideOnMobileOnly">
+                                <Field class="px-3">
+                                    <TextEdit Placeholder="Search..." />
+                                </Field>
+                            </BarItem>
+                        </BarStart>
+                        <BarEnd>
+                            <BarItem class="px-3 hideOnMobileOnly">
+                                <BarLink To="#extaCompany">Exsta Company</BarLink>
+                            </BarItem>
+                            <BarItem Position="Position.Absolute.Top.Is0.End.Is0" Class="showOnMobileOnly">
+                                <BarLink Class="branding" To="">
+                                    <BarIcon id="exstaIcon" IconName="IconName.Coffee" IconSize="IconSize.Large" />
+                                    <h2>&nbsp;Exsta</h2>
+                                </BarLink>
+                            </BarItem>
+                        </BarEnd>
+                    </BarMenu>
+                </Bar>
+            </LayoutHeader>
+            <LayoutContent class="body">
+                @* Loads in Content specific Page *@
+                @Body
+            </LayoutContent>
+        </Layout>
+    </Layout>
 </div>
+
+@code {
+    private Bar sidebar;
+}
