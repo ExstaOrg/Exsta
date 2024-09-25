@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Cart.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Blazorise" Version="1.6.0" />
     <PackageReference Include="Blazorise.Animate" Version="1.6.0" />
     <PackageReference Include="Blazorise.Bootstrap5" Version="1.6.0" />
@@ -36,18 +32,6 @@
     <Content Update="wwwroot\appsettings.LocalDevelopment.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Cart.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Cart.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Cart.razor" />
   </ItemGroup>
 
 </Project>
