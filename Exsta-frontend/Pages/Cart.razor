@@ -4,6 +4,40 @@
 
 <h3>Cart</h3>
 
+
+<Card>
+    <CardBody>
+        <h5>Total Items: 2</h5>
+        <Card>
+            <CardBody>
+                <Figure Class="featuredImage">
+                    <FigureImage Source="placeHolder1.jpg" AlternateText="empty-256x256" />
+                </Figure>
+                <Div Class="cardText">
+                    <CardTitle Size="3">
+                        Touch Grass
+                    </CardTitle>
+                    <Link Position="Position.Absolute.Top.Is0.End.Is0" Class="link" To="#b-docs-page-title">
+                    Remove from Cart
+                    </Link>
+                    <CardText>
+                        This is some text within a card body. Jelly lemon drops tiramisu chocolate cake cotton candy soufflé oat cake sweet roll. Sugar plum marzipan dragée topping cheesecake chocolate bar. Danish muffin icing donut.
+                    </CardText>
+                </Div>
+
+                <TextEdit Class="cartItemInputAmount" Text="1" MaskType="MaskType.RegEx" EditMask="^(\d+(.\d{0,2})?|.?\d{1,2})$" />
+                <Heading Class="cartItemPrice" Size="HeadingSize.Is5">
+                    x €10,99
+                </Heading>
+
+
+
+            </CardBody>
+        </Card>
+        <Button Color="Color.Primary">Place Order</Button>
+    </CardBody>
+</Card>
+
 @code {
 
 }
