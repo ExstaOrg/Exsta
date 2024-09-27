@@ -10,7 +10,6 @@
                      Background="Background.Light"
                      NavigationBreakpoint="Breakpoint.Tablet"
                      ThemeContrast="ThemeContrast.Light">
-                    @* <BarToggler Bar="@sidebar" /> *@
                     <BarBrand>
                         <BarItem>
                             <BarLink To="">
@@ -23,7 +22,7 @@
                         <BarStart>
                             <BarItem>
                                 <Card>
-                                    <BarLink To="login" Class="loginCard">
+                                    <BarLink To="login" Class="navCard">
                                         <BarIcon IconName="IconName.User" />
                                         Login/Register
                                     </BarLink>
@@ -50,9 +49,9 @@
                         <BarEnd>
                             <BarItem>
                                 <Card>
-                                    <BarLink To="cart">
+                                    <BarLink To="cart" Class="navCard">
                                         <BarIcon IconName="IconName.ShoppingCart" />
-                                        Cart (0)
+                                        Cart (2)
                                     </BarLink>
                                 </Card>
                             </BarItem>
@@ -71,7 +70,6 @@
                      Background="Background.Light"
                      ThemeContrast="ThemeContrast.Light">
                     <BarToggler Bar="@sidebar" />
-                    @* <BarToggler /> *@
                     <BarMenu>
                         <BarStart>
                             <BarItem Class="hideOnMobileOnly">

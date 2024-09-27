@@ -4,16 +4,16 @@
 
 <h3>Cart</h3>
 
-
 <Card>
     <CardBody>
         <h5>Total Items: 2</h5>
+        @* Item 1 *@
         <Card>
             <CardBody>
-                <Figure Class="featuredImage">
+                <Figure Class="cartItemImage">
                     <FigureImage Source="placeHolder1.jpg" AlternateText="empty-256x256" />
                 </Figure>
-                <Div Class="cardText">
+                <Div Class="cartText">
                     <CardTitle Size="3">
                         Touch Grass
                     </CardTitle>
@@ -24,17 +24,51 @@
                         This is some text within a card body. Jelly lemon drops tiramisu chocolate cake cotton candy soufflé oat cake sweet roll. Sugar plum marzipan dragée topping cheesecake chocolate bar. Danish muffin icing donut.
                     </CardText>
                 </Div>
-
                 <TextEdit Class="cartItemInputAmount" Text="1" MaskType="MaskType.RegEx" EditMask="^(\d+(.\d{0,2})?|.?\d{1,2})$" />
                 <Heading Class="cartItemPrice" Size="HeadingSize.Is5">
                     x €10,99
                 </Heading>
-
-
-
             </CardBody>
         </Card>
-        <Button Color="Color.Primary">Place Order</Button>
+
+        @* Item 2 *@
+        <Card>
+            <CardBody>
+                <Figure Class="cartItemImage">
+                    <FigureImage Source="placeHolder1.jpg" AlternateText="empty-256x256" />
+                </Figure>
+                <Div Class="cartText">
+                    <CardTitle Size="3">
+                        Touch Grass
+                    </CardTitle>
+                    <Link Position="Position.Absolute.Top.Is0.End.Is0" Class="link" To="#b-docs-page-title">
+                    Remove from Cart
+                    </Link>
+                    <CardText>
+                        This is some text within a card body. Jelly lemon drops tiramisu chocolate cake cotton candy soufflé oat cake sweet roll. Sugar plum marzipan dragée topping cheesecake chocolate bar. Danish muffin icing donut.
+                    </CardText>
+                </Div>
+                <TextEdit Class="cartItemInputAmount" Text="1" MaskType="MaskType.RegEx" EditMask="^(\d+(.\d{0,2})?|.?\d{1,2})$" />
+                <Heading Class="cartItemPrice" Size="HeadingSize.Is5">
+                    x €10,99
+                </Heading>
+            </CardBody>
+        </Card>
+
+        <Div Class="parent-element">
+            <Div Class="textp1 text-p">
+                Vat (21%) <br>
+                <b>Total</b>
+            </Div>
+            <Div Class="textp2 text-p">
+                €10,99 <br>
+                <b>€10,99</b>
+            </Div>
+        </Div>
+
+        <Div Class="fillSpace">
+            <Button Color="Color.Primary">Place Order</Button>
+        </Div>
     </CardBody>
 </Card>
 
