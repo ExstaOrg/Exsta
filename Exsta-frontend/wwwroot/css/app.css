@@ -208,7 +208,6 @@ figure {
     left: 32%;
 }
 
-/*test*/
 .parent-element {
     display: flex;
     flex-direction: row;
@@ -223,8 +222,4 @@ figure {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-}
-
-.textp1 {
-    margin-right: 44px;
 }
