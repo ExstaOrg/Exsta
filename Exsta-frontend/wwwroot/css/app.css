@@ -32,7 +32,7 @@
     margin: 8px;
 }
 
-.loginCard.active {
+.navCard.active {
     background: #D7DAE7 !important;
 }
 
@@ -93,13 +93,13 @@ figure {
     margin-bottom: 0px;
 }
 
-.cardText {
+.featuredText {
     position: absolute;
     width: 56%;
     left: 42%;
 }
 
-.cardButton {
+.addToCartButton {
     float: right;
     position: absolute;
     bottom: 14px;
@@ -159,7 +159,7 @@ figure {
     padding-right: 40%;
 }
 
-.linkForgotPass {
+.link {
     margin: 0px;
     color: #3f4d62;
     border-bottom: 2px solid var(--b-theme-primary);
@@ -178,4 +178,48 @@ figure {
 
 .inputFields .btn {
     width: 100%;
+}
+
+/*Cart Page*/
+.cartItemInputAmount {
+    width: 3%;
+    height: 8%;
+    position: absolute;
+    bottom: 10px;
+    right: 90px;
+}
+
+.cartItemPrice {
+    position: absolute;
+    float: right;
+    bottom: 1px;
+    right: 10px;
+}
+
+.cartItemImage {
+    width: 30%;
+    float: left;
+    border-radius: 25px;
+}
+
+.cartText {
+    position: absolute;
+    width: 66%;
+    left: 32%;
+}
+
+.parent-element {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    float: right;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.fillSpace {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
