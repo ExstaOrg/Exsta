@@ -24,9 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Shared", ".Shared", "{4BA60918-A374-4671-A1EB-D4A9F6FE546D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend-Shared", "Shared\Backend-Shared.csproj", "{7C9FFEA1-B770-4CD5-A58E-044268ED9EB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend_Shared", "Shared\Backend_Shared.csproj", "{7C9FFEA1-B770-4CD5-A58E-044268ED9EB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exsta-Shared", "..\Exsta-Shared\Exsta-Shared.csproj", "{07A60AA8-386F-41C5-87B0-137B1A314657}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exsta_Shared", "..\Exsta-Shared\Exsta_Shared.csproj", "{07A60AA8-386F-41C5-87B0-137B1A314657}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
