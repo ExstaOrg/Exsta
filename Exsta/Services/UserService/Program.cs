@@ -65,6 +65,29 @@ builder.Services.AddSwaggerGen(c => {
     };
 
     c.AddSecurityRequirement(securityRequirement);
+
+    // Add API Key Authentication scheme
+    c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme {
+        Name = "x-api-key", // Header name
+        Type = SecuritySchemeType.ApiKey,
+        In = ParameterLocation.Header,
+        Description = "Enter your API key"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "ApiKey"
+                }
+            },
+            new string[] {}
+        }
+    });
 });
 
 builder.Services
