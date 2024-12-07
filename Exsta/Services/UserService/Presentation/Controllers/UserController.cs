@@ -1,14 +1,17 @@
 ﻿using Exsta_Shared.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UserService.Repositories;
 
 namespace UserService.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class UserController(IUserRepository userRepository) : ControllerBase {
     private readonly IUserRepository _userRepository = userRepository;
 
     [HttpOptions]
+    [AllowAnonymous]
     public IActionResult Options() {
         return Ok();
     }
