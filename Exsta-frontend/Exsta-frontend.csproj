@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Exsta-Shared\Exsta-Shared.csproj" />
+    <ProjectReference Include="..\Exsta-Shared\Exsta_Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
