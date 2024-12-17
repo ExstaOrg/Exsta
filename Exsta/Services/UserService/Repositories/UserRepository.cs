@@ -18,6 +18,10 @@ public class UserRepository : IUserRepository {
         return await _context.Users.FindAsync(id);
     }
 
+    public async Task<User?> GetUserByEmailAsync(string email) {
+        return await _context.Users.Where(user => string.Equals(email, user.Email, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefaultAsync();
+    }
+
     public async Task AddUserAsync(User user) {
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
