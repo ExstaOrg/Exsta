@@ -4,9 +4,10 @@ using UserService.Repositories;
 
 namespace UserService.Application;
 
-public class RegisterUserApplicationService(IUserRepository userRepository) : IRegisterUserApplicationService {
+public class RegisterUserApplicationService(IUserRepository userRepository, IPasswordApplicationService passwordApplicationService) : IRegisterUserApplicationService {
 
     private readonly IUserRepository _userRepository = userRepository;
+    private readonly IPasswordApplicationService _passwordApplicationService = passwordApplicationService;
 
     public async Task<(bool Success, string[]? Errors)> RegisterUserAsync(RegisterUserDto registerUserDto) {
         // Check if the user already exists
@@ -16,13 +17,14 @@ public class RegisterUserApplicationService(IUserRepository userRepository) : IR
         }
 
         // Hash the password
-        var hashedPassword = "";//TODO: _passwordHasher.HashPassword(registerUserDto.Password);
+        (var hashedPassword, var salt) = _passwordApplicationService.HashPassword(registerUserDto.Password);
 
         // Create the user entity
         var newUser = new User {
-            Username = "",
+            Username = registerUserDto.Username,
             Email = registerUserDto.Email,
             PasswordHash = hashedPassword,
+            PasswordSalt = salt,
             Roles = registerUserDto.Roles ?? ["User"]
         };
 
