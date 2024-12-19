@@ -36,6 +36,7 @@ builder.Services.AddDbContext<UserServiceDbContext>(options =>
 builder.Services.AddTransient<AuthService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRegisterUserApplicationService, RegisterUserApplicationService>();
+builder.Services.AddScoped<IPasswordApplicationService, PasswordApplicationService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
