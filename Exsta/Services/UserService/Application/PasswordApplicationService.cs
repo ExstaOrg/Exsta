@@ -3,12 +3,8 @@ using System.Text;
 
 namespace UserService.Application;
 
-public class PasswordApplicationService : IPasswordApplicationService {
-    private readonly string _pepper; // Loaded securely from configuration
-
-    public PasswordApplicationService(string pepper) {
-        _pepper = pepper;
-    }
+public class PasswordApplicationService(string pepper) : IPasswordApplicationService {
+    private readonly string _pepper = pepper; // Loaded securely from configuration
 
     public (string HashedPassword, string Salt) HashPassword(string password) {
         // Generate a unique salt for this user
@@ -34,7 +30,7 @@ public class PasswordApplicationService : IPasswordApplicationService {
     }
 
     private string ComputeHash(string input) {
-        using var hmac = new HMACSHA256();
+        using var hmac = new HMACSHA256(); // SHA256 is acceptable in our use case due to also salting and peppering the password
         var hashBytes = hmac.ComputeHash(Encoding.UTF8.GetBytes(input));
         return Convert.ToBase64String(hashBytes);
     }
