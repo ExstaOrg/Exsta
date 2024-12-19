@@ -1,0 +1,15 @@
+meta {
+  name: GET User by Id
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{url}}/api/User/1
+  body: none
+  auth: none
+}
+
+headers {
+  {{apim-or-api-key}}: {{user-service-api-key}}
+}

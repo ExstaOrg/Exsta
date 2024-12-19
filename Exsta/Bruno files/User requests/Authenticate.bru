@@ -1,0 +1,28 @@
+meta {
+  name: Authenticate
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{url}}/authenticate
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  {{apim-or-api-key}}: {{user-service-api-key}}
+}
+
+body:json {
+  {
+    "username": "Tim",
+    "email": "tim@test.com",
+    "passwordHash": "pass",
+    "passwordSalt": "salt",
+    "roles": [
+      "User"
+    ]
+  }
+}

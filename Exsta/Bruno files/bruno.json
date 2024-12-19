@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Exsta",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

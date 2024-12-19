@@ -1,0 +1,28 @@
+meta {
+  name: POST User
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{url}}/api/User
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "id": 0,
+    "username": "string",
+    "email": "string",
+    "passwordHash": "string",
+    "passwordSalt": "string",
+    "roles": [
+      "user"
+    ]
+  }
+}

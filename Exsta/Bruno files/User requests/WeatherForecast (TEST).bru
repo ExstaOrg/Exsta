@@ -1,0 +1,15 @@
+meta {
+  name: WeatherForecast (TEST)
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{url}}/WeatherForecast
+  body: none
+  auth: none
+}
+
+headers {
+  {{apim-or-api-key}}: {{user-service-api-key}}
+}
