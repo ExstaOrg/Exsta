@@ -30,7 +30,7 @@ public class PasswordApplicationService(string pepper) : IPasswordApplicationSer
     }
 
     private string ComputeHash(string input) {
-        using var hmac = new HMACSHA256(); // SHA256 is acceptable in our use case due to also salting and peppering the password
+        using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(_pepper)); // SHA256 is acceptable in our use case due to also salting and peppering the password
         var hashBytes = hmac.ComputeHash(Encoding.UTF8.GetBytes(input));
         return Convert.ToBase64String(hashBytes);
     }

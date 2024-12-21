@@ -5,6 +5,8 @@ using Moq;
 using UserService.Application;
 using UserService.Repositories;
 
+namespace UserService.Tests;
+
 public class RegisterUserApplicationServiceTests {
     private readonly Mock<IUserRepository> _userRepositoryMock = new();
     private readonly Mock<IPasswordApplicationService> _passwordServiceMock = new();
