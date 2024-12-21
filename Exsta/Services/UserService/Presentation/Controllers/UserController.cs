@@ -35,22 +35,6 @@ public class UserController(IUserRepository userRepository, IRegisterUserApplica
     }
 
     [HttpPost]
-    public async Task<ActionResult> AddUser(User user) {
-        await _userRepository.AddUserAsync(user);
-        return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
-    }
-
-    [HttpPut("{id}")]
-    public async Task<ActionResult> UpdateUser(int id, User user) {
-        if (id != user.Id) {
-            return BadRequest();
-        }
-
-        await _userRepository.UpdateUserAsync(user);
-        return NoContent();
-    }
-
-    [HttpPost]
     public async Task<ActionResult> RegisterUser([FromBody] RegisterUserDto registerUserDto) {
         if (!ModelState.IsValid) {
             return BadRequest(ModelState);

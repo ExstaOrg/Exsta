@@ -36,7 +36,11 @@ builder.Services.AddDbContext<UserServiceDbContext>(options =>
 builder.Services.AddTransient<AuthService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRegisterUserApplicationService, RegisterUserApplicationService>();
-builder.Services.AddScoped<IPasswordApplicationService, PasswordApplicationService>();
+builder.Services.AddScoped<IPasswordApplicationService, PasswordApplicationService>(sp => {
+    var pepper = builder.Configuration["passwordservice-pepper"]
+        ?? throw new InvalidOperationException("Pepper is not configured.");
+    return new PasswordApplicationService(pepper);
+});
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
