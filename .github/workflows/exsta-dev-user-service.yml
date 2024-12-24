@@ -32,7 +32,7 @@ jobs:
 
     - name: Test
       run: |
-        dotnet test "Tests\Services\UserService.Tests\UserService.Tests.csproj" `
+        dotnet test "Exsta\Tests\Services\UserService.Tests\UserService.Tests.csproj" `
           --configuration ${{ env.CONFIGURATION }} `
           --logger "trx;LogFileName=TestResults.trx"
 
