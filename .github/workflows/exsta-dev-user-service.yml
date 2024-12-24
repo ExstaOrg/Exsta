@@ -33,7 +33,7 @@ jobs:
 
     - name: Test
       run: |
-        dotnet test "${{ env.REPO_ROOT }}\Tests\Services\UserService.Tests.csproj" `
+        dotnet test "${{ env.REPO_ROOT }}\Tests\Services\UserService.Tests\UserService.Tests.csproj" `
           --configuration ${{ env.CONFIGURATION }} `
           --no-build `
           --logger "trx;LogFileName=TestResults.trx"
