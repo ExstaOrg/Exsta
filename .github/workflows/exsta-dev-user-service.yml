@@ -32,9 +32,9 @@ jobs:
 
     - name: Test
       run: |
-        dotnet test "${{ env.WORKING_DIRECTORY }}/Tests/Services/UserService.Tests.csproj" \
-          --configuration ${{ env.CONFIGURATION }} \
-          --no-build \
+        dotnet test "${{ env.WORKING_DIRECTORY }}\Tests\Services\UserService.Tests.csproj" `
+          --configuration ${{ env.CONFIGURATION }} `
+          --no-build `
           --logger "trx;LogFileName=TestResults.trx"
 
     - name: Publish
@@ -52,7 +52,6 @@ jobs:
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
 
   deploy:
     runs-on: windows-latest
