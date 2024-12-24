@@ -13,6 +13,7 @@ env:
   CONFIGURATION: Development
   DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: Exsta\Services\UserService
+  REPO_ROOT: Exsta
 jobs:
   build:
     runs-on: windows-latest
@@ -32,7 +33,7 @@ jobs:
 
     - name: Test
       run: |
-        dotnet test "${{ env.WORKING_DIRECTORY }}\Tests\Services\UserService.Tests.csproj" `
+        dotnet test "${{ env.REPO_ROOT }}\Tests\Services\UserService.Tests.csproj" `
           --configuration ${{ env.CONFIGURATION }} `
           --no-build `
           --logger "trx;LogFileName=TestResults.trx"
