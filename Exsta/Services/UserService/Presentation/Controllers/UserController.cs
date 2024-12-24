@@ -1,14 +1,17 @@
 ﻿using Exsta_Shared.Domain;
+using Exsta_Shared.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using UserService.Application;
 using UserService.Repositories;
 
 namespace UserService.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]
-public class UserController(IUserRepository userRepository) : ControllerBase {
+public class UserController(IUserRepository userRepository, IRegisterUserApplicationService registerUserApplicationService) : ControllerBase {
     private readonly IUserRepository _userRepository = userRepository;
+    private readonly IRegisterUserApplicationService _registerUserApplicationService = registerUserApplicationService;
 
     [HttpOptions]
     [AllowAnonymous]
@@ -32,19 +35,18 @@ public class UserController(IUserRepository userRepository) : ControllerBase {
     }
 
     [HttpPost]
-    public async Task<ActionResult> AddUser(User user) {
-        await _userRepository.AddUserAsync(user);
-        return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
-    }
-
-    [HttpPut("{id}")]
-    public async Task<ActionResult> UpdateUser(int id, User user) {
-        if (id != user.Id) {
-            return BadRequest();
+    public async Task<ActionResult> RegisterUser([FromBody] RegisterUserDto registerUserDto) {
+        if (!ModelState.IsValid) {
+            return BadRequest(ModelState);
         }
 
-        await _userRepository.UpdateUserAsync(user);
-        return NoContent();
+        var result = await _registerUserApplicationService.RegisterUserAsync(registerUserDto);
+
+        if (!result.Success) {
+            return BadRequest(result.Errors);
+        }
+
+        return Ok(new { message = "User registered successfully" });
     }
 
     [HttpDelete("{id}")]

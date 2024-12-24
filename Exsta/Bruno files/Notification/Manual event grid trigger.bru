@@ -1,0 +1,33 @@
+meta {
+  name: Manual event grid trigger
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://exsta-dev-eg.westeurope-1.eventgrid.azure.net/api/events
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  User-Agent: insomnia/9.3.3
+  aeg-sas-key: uezl3pji9CaLWiCYrVOsgasBltO2adMypAZEGHyBktI=
+}
+
+body:json {
+  [
+    {
+      "id": "1234",
+      "eventType": "recordInserted",
+      "subject": "example/record",
+      "eventTime": "2023-08-09T00:00:00Z",
+      "data": {
+        "message": "Hello, World!"
+      },
+      "dataVersion": "1.0"
+    }
+  ]
+  
+}

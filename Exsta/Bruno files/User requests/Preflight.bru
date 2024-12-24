@@ -1,0 +1,17 @@
+meta {
+  name: Preflight
+  type: http
+  seq: 5
+}
+
+options {
+  url: {{url}}/api/User
+  body: none
+  auth: none
+}
+
+headers {
+  User-Agent: insomnia/9.3.3
+  {{apim-or-api-key}}: {{user-service-api-key}}
+  Origin: {{apim-url}}
+}

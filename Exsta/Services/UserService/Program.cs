@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Shared.Middleware;
 using System.Text;
+using UserService.Application;
 using UserService.Data;
 using UserService.Repositories;
 
@@ -34,6 +35,12 @@ builder.Services.AddDbContext<UserServiceDbContext>(options =>
 // Add services to the container.
 builder.Services.AddTransient<AuthService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IRegisterUserApplicationService, RegisterUserApplicationService>();
+builder.Services.AddScoped<IPasswordApplicationService, PasswordApplicationService>(sp => {
+    var pepper = builder.Configuration["passwordservice-pepper"]
+        ?? throw new InvalidOperationException("Pepper is not configured.");
+    return new PasswordApplicationService(pepper);
+});
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -18,23 +18,40 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
+
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+
     - name: Test
-      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
+      run: |
+        dotnet test "Exsta\Tests\Services\UserService.Tests\UserService.Tests.csproj" `
+          --configuration ${{ env.CONFIGURATION }} `
+          --logger "trx;LogFileName=TestResults.trx"
+
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+
+    - name: Publish Test Results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: "**/TestResults/*.trx"
+
     - name: Publish Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
   deploy:
     runs-on: windows-latest
     needs: build
