@@ -1,6 +1,6 @@
-using Azure.Identity;
 using Backend_Shared.Application;
 using Exsta_Shared.Domain;
+using Exsta_Shared.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -13,6 +13,10 @@ using UserService.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+if (builder.Environment.IsLocalDevelopment()) {
+    builder.Configuration.AddUserSecrets<Program>();
+}
+
 // Load CORS origins from configuration
 var allowedCorsOrigins = builder.Configuration.GetSection("AllowedCorsOrigins").Get<string[]>()
     ?? [""];
@@ -24,13 +28,15 @@ builder.Services.AddCors(options => {
                           .AllowAnyMethod());
 });
 
-// Key Vault
-builder.Configuration.AddAzureKeyVault(new Uri("https://exsta-dev-key-vault.vault.azure.net/"),
-    new DefaultAzureCredential());
+// DbContext
+// Prefer environment variable if available, fallback to appsettings
+var sqlConnectionString = Environment.GetEnvironmentVariable("UserServiceSqlServer")
+                      ?? builder.Configuration.GetConnectionString("UserServiceSqlServer");
 
-//DbContext
+
+
 builder.Services.AddDbContext<UserServiceDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("UserServiceSqlServer")));
+    options.UseSqlServer(sqlConnectionString));
 
 // Add services to the container.
 builder.Services.AddTransient<AuthService>();
