@@ -32,11 +32,17 @@ builder.Services.AddCors(options => {
 // Prefer environment variable if available, fallback to appsettings
 var sqlConnectionString = Environment.GetEnvironmentVariable("UserServiceSqlServer")
                       ?? builder.Configuration.GetConnectionString("UserServiceSqlServer");
-
-
-
 builder.Services.AddDbContext<UserServiceDbContext>(options =>
     options.UseSqlServer(sqlConnectionString));
+
+// Add AppInsights
+builder.Services.AddApplicationInsightsTelemetry(options => {
+    options.ConnectionString = builder.Configuration["ApplicationInsights:ConnectionString"];
+});
+
+builder.Logging.AddConsole();  // Logs to Console
+builder.Logging.AddDebug();    // Logs for Debugging
+builder.Logging.AddApplicationInsights(); // Logs to App Insights
 
 // Add services to the container.
 builder.Services.AddTransient<AuthService>();
@@ -44,7 +50,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRegisterUserApplicationService, RegisterUserApplicationService>();
 builder.Services.AddScoped<IPasswordApplicationService, PasswordApplicationService>(sp => {
     var pepper = builder.Configuration["passwordservice-pepper"]
-        ?? throw new InvalidOperationException("Pepper is not configured.");
+        ?? throw new NullReferenceException("Pepper is not configured.");
     return new PasswordApplicationService(pepper);
 });
 builder.Services.AddControllers();
