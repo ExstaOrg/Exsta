@@ -146,7 +146,10 @@ app.UseCors("AllowSpecificOrigin");
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseMiddleware<ApiKeyMiddleware>();
+app.UseWhen(
+    context => context.Request.Path.StartsWithSegments("/api"), // Apply middleware only for API routes
+    appBuilder => appBuilder.UseMiddleware<ApiKeyMiddleware>()
+);
 
 app.MapControllers();
 
