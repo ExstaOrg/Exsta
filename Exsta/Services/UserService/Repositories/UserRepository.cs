@@ -15,7 +15,7 @@ public class UserRepository : IUserRepository {
     }
 
     public async Task<User> GetUserByIdAsync(int id) {
-        return await _context.Users.FindAsync(id);
+        return await _context.Users.FindAsync(id) ?? throw new ArgumentException($"No associated user was found with given {id}");
     }
 
     public async Task<User?> GetUserByEmailAsync(string email) {

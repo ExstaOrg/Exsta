@@ -1,6 +1,6 @@
-using Azure.Identity;
 using Backend_Shared.Application;
 using Exsta_Shared.Domain;
+using Exsta_Shared.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -13,6 +13,10 @@ using UserService.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+if (builder.Environment.IsLocalDevelopment()) {
+    builder.Configuration.AddUserSecrets<Program>();
+}
+
 // Load CORS origins from configuration
 var allowedCorsOrigins = builder.Configuration.GetSection("AllowedCorsOrigins").Get<string[]>()
     ?? [""];
@@ -24,13 +28,22 @@ builder.Services.AddCors(options => {
                           .AllowAnyMethod());
 });
 
-// Key Vault
-builder.Configuration.AddAzureKeyVault(new Uri("https://exsta-dev-key-vault.vault.azure.net/"),
-    new DefaultAzureCredential());
-
-//DbContext
+// DbContext
+// Prefer environment variable if available, fallback to appsettings
+var sqlConnectionString = Environment.GetEnvironmentVariable("UserServiceSqlServer")
+                      ?? builder.Configuration.GetConnectionString("UserServiceSqlServer")
+                      ?? throw new NullReferenceException("No connection string configured for SQL server");
 builder.Services.AddDbContext<UserServiceDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("UserServiceSqlServer")));
+    options.UseSqlServer(sqlConnectionString));
+
+// Add AppInsights
+builder.Services.AddApplicationInsightsTelemetry(options => {
+    options.ConnectionString = builder.Configuration["ApplicationInsights:ConnectionString"];
+});
+
+builder.Logging.AddConsole();  // Logs to Console
+builder.Logging.AddDebug();    // Logs for Debugging
+builder.Logging.AddApplicationInsights(); // Logs to App Insights
 
 // Add services to the container.
 builder.Services.AddTransient<AuthService>();
@@ -38,7 +51,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRegisterUserApplicationService, RegisterUserApplicationService>();
 builder.Services.AddScoped<IPasswordApplicationService, PasswordApplicationService>(sp => {
     var pepper = builder.Configuration["passwordservice-pepper"]
-        ?? throw new InvalidOperationException("Pepper is not configured.");
+        ?? throw new NullReferenceException("Pepper is not configured.");
     return new PasswordApplicationService(pepper);
 });
 builder.Services.AddControllers();
@@ -106,7 +119,9 @@ builder.Services
         x.RequireHttpsMetadata = false;
         x.SaveToken = true;
         x.TokenValidationParameters = new TokenValidationParameters {
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["auth-service-private-key"])),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("auth-service-private-key")
+                                                                                ?? builder.Configuration["auth-service-private-key"]
+                                                                                ?? throw new NullReferenceException("Private key was not initialized"))),
             ValidateIssuer = false,
             ValidateAudience = false
         };
@@ -131,7 +146,10 @@ app.UseCors("AllowSpecificOrigin");
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseMiddleware<ApiKeyMiddleware>();
+app.UseWhen(
+    context => context.Request.Path.StartsWithSegments("/api"), // Apply middleware only for API routes
+    appBuilder => appBuilder.UseMiddleware<ApiKeyMiddleware>()
+);
 
 app.MapControllers();
 
