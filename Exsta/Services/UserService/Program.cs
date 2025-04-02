@@ -31,7 +31,8 @@ builder.Services.AddCors(options => {
 // DbContext
 // Prefer environment variable if available, fallback to appsettings
 var sqlConnectionString = Environment.GetEnvironmentVariable("UserServiceSqlServer")
-                      ?? builder.Configuration.GetConnectionString("UserServiceSqlServer");
+                      ?? builder.Configuration.GetConnectionString("UserServiceSqlServer")
+                      ?? throw new NullReferenceException("No connection string configured for SQL server");
 builder.Services.AddDbContext<UserServiceDbContext>(options =>
     options.UseSqlServer(sqlConnectionString));
 
@@ -118,7 +119,9 @@ builder.Services
         x.RequireHttpsMetadata = false;
         x.SaveToken = true;
         x.TokenValidationParameters = new TokenValidationParameters {
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["auth-service-private-key"])),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("auth-service-private-key")
+                                                                                ?? builder.Configuration["auth-service-private-key"]
+                                                                                ?? throw new NullReferenceException("Private key was not initialized"))),
             ValidateIssuer = false,
             ValidateAudience = false
         };
