@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Backend_Shared.Application;
 
-public class AuthService(IConfiguration configuration) {
+public class AuthService(IConfiguration configuration) : IAuthService {
 
     private readonly IConfiguration _configuration = configuration;
 

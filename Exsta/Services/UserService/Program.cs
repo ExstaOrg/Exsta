@@ -1,5 +1,4 @@
 using Backend_Shared.Application;
-using Exsta_Shared.Domain;
 using Exsta_Shared.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -46,12 +45,13 @@ builder.Logging.AddDebug();    // Logs for Debugging
 builder.Logging.AddApplicationInsights(); // Logs to App Insights
 
 // Add services to the container.
-builder.Services.AddTransient<AuthService>();
+builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRegisterUserApplicationService, RegisterUserApplicationService>();
 builder.Services.AddScoped<IPasswordApplicationService, PasswordApplicationService>(sp => {
-    var pepper = builder.Configuration["passwordservice-pepper"]
-        ?? throw new NullReferenceException("Pepper is not configured.");
+    var pepper = Environment.GetEnvironmentVariable("passwordservice-pepper")
+                    ?? builder.Configuration["passwordservice-pepper"]
+                    ?? throw new NullReferenceException("Pepper is not configured.");
     return new PasswordApplicationService(pepper);
 });
 builder.Services.AddControllers();
@@ -131,13 +131,10 @@ builder.Services.AddAuthorization();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName.Equals("LocalDevelopment")) {
+if (app.Environment.IsDevelopment() || app.Environment.IsLocalDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.MapPost("/authenticate", (User user, AuthService authService)
-    => authService.GenerateToken(user));
 
 app.UseHttpsRedirection();
 
