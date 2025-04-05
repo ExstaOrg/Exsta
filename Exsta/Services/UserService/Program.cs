@@ -44,6 +44,8 @@ builder.Logging.AddConsole();  // Logs to Console
 builder.Logging.AddDebug();    // Logs for Debugging
 builder.Logging.AddApplicationInsights(); // Logs to App Insights
 
+Console.WriteLine($"SQL Conn: {sqlConnectionString}");
+
 // Add services to the container.
 builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
