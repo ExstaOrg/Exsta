@@ -35,6 +35,8 @@ var sqlConnectionString = Environment.GetEnvironmentVariable("UserServiceSqlServ
 builder.Services.AddDbContext<UserServiceDbContext>(options =>
     options.UseSqlServer(sqlConnectionString));
 
+Console.WriteLine($"SQL Connstring: {sqlConnectionString}");
+
 // Add AppInsights
 builder.Services.AddApplicationInsightsTelemetry(options => {
     options.ConnectionString = builder.Configuration["ApplicationInsights:ConnectionString"];
