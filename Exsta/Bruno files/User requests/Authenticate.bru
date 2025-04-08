@@ -26,3 +26,8 @@ body:json {
     ]
   }
 }
+
+script:post-response {
+  let data = res.body;
+  bru.setVar("token", data.token);
+}
