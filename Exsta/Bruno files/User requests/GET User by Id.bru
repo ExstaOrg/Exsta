@@ -7,9 +7,13 @@ meta {
 get {
   url: {{url}}/api/User/1
   body: none
-  auth: none
+  auth: bearer
 }
 
 headers {
   {{apim-or-api-key}}: {{user-service-api-key}}
+}
+
+auth:bearer {
+  token: {{token}}
 }

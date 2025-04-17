@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{url}}/authenticate
+  url: {{url}}/api/User/authenticate
   body: json
   auth: none
 }
@@ -25,4 +25,9 @@ body:json {
       "User"
     ]
   }
+}
+
+script:post-response {
+  let data = res.body;
+  bru.setVar("token", data.token);
 }

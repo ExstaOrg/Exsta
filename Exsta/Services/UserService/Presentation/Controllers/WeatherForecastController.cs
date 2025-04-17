@@ -1,7 +1,8 @@
 using Exsta_Shared.Domain;
 using Microsoft.AspNetCore.Mvc;
 
-namespace UserService.Controllers;
+namespace UserService.Presentation.Controllers;
+
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase {
