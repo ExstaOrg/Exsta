@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using UserService.Application;
 using UserService.Repositories;
 
-namespace UserService.Controllers;
+namespace UserService.Presentation.Controllers;
+
 [Route("api/[controller]")]
 [ApiController]
 public class UserController(IUserRepository userRepository,
